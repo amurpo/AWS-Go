@@ -24,6 +24,9 @@ jobs:
     - name: Build Go code
       run: go build -o TestGoLambda
 
+    - name: Compress built files
+      run: zip TestGoLambda.zip TestGoLambda
+
     - name: Deploy to Lambda
       run: |
         aws lambda update-function-code --function-name Test-GO --zip-file fileb://TestGoLambda.zip
